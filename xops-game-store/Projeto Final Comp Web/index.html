@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>CISMA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <style>
+        .styled-box {
+            display: none;
+        }
+
+        .styled-box.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container-fluid tudo">
+            <!-- LOGOTIPO -->
+            <div class="logotipo">
+                <a href="index.html"><img src="img/logo.png" alt="logotipo"></a>
+            </div>
+            <div class="navbar">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#itens" aria-controls="itens" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- ZONA DA BARRA DE NAVEGAÇÃO -->
+                    <div class="collapse navbar-collapse" id="itens">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="files/Jogos/jogos.html">Jogos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="files/GIFTACRDS/GIFTCARDS.html">GiftCards</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="files/Promocoes/Promocoes.html">Promoções</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="files/Ultimos lançamentos/lançamentos.html">ÚLTIMOS LANÇAMENTOS</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0 bg-dark">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                        </form>
+                    </div>
+                </nav>
+            </div><!--navbar-->
+        </div>
+    </header>
+
+    
+
+
+    <!-- GTA V card --> 
+    <div class="container">
+        <div class="content">
+            <div class="styled-box active" id="card-gta">
+                <div class="arrow left-arrow" onclick="showPreviousCard()">&lt;</div> <!-- Seta para a esquerda -->
+                <div class="game-content">
+                    <div class="game-image">
+                        <img src="img/ads/gta.jpg" alt="Grand Theft Auto VI">
+                    </div>
+                    <div class="game-details">
+                        <div class="game-status">OUT NOW</div>
+                        <div class="game-title">Grand Theft Auto VI</div>
+                        <a href="files/comprar/GTAVI.html" class="game-price">
+                            <div class="current-price">49.99€</div>
+                            <s class="original-price">119.99€</s>
+                        </a>
+                    </div>
+                </div>
+                <div class="arrow right-arrow" onclick="showNextCard()">&gt;</div> <!-- Seta para a direita -->
+            </div>
+            <div class="styled-box" id="card-fallout">
+                <div class="arrow left-arrow" onclick="showPreviousCard()">&lt;</div> <!-- Seta para a esquerda -->
+                <div class="game-content">
+                    <div class="game-image">
+                        <img src="img/ads/fallout-76.jpg" alt="Fallout 76">
+                    </div>
+                    <div class="game-details">
+                        <div class="game-status">OUT NOW</div>
+                        <div class="game-title">Fallout 76</div>
+                        <a href="files/comprar/fallout76.html" class="game-price">
+                            <div class="current-price">0.99€</div>
+                            <s class="original-price">23.55€</s>
+                        </a>
+                    </div>
+                </div>
+                <div class="arrow right-arrow" onclick="showNextCard()">&gt;</div> <!-- Seta para a direita -->
+            </div>
+            <div class="styled-box" id="card-asseto">
+                <div class="arrow left-arrow" onclick="showPreviousCard()">&lt;</div> <!-- Seta para a esquerda -->
+                <div class="game-content">
+                    <div class="game-image">
+                        <img src="img/ads/Asseto corsa (1).jpg" alt="Assetto Corsa">
+                    </div>
+                    <div class="game-details">
+                        <div class="game-status">OUT NOW</div>
+                        <div class="game-title">Assetto Corsa</div>
+                        <a href="files/comprar/assetocorsa.html" class="game-price">
+                            <div class="current-price">6.72€</div>
+                            <s class="original-price">59.99€</s>
+                        </a>
+                    </div>
+                </div>
+                <div class="arrow right-arrow" onclick="showNextCard()">&gt;</div> <!-- Seta para a direita -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCardIndex = 0;
+        const cards = document.querySelectorAll('.styled-box');
+
+        function showCard(index) {
+            cards.forEach((card, i) => {
+                if (i === index) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
+
+        function showNextCard() {
+            currentCardIndex = (currentCardIndex + 1) % cards.length;
+            showCard(currentCardIndex);
+        }
+
+        function showPreviousCard() {
+            currentCardIndex = (currentCardIndex - 1 + cards.length) % cards.length;
+            showCard(currentCardIndex);
+        }
+
+        // Função para trocar automaticamente os cards
+        function autoChangeCards() {
+            setInterval(() => {
+                showNextCard();
+            }, 5000); // Troca de card a cada 5 segundos (5000 milissegundos)
+        }
+
+        // Inicia a troca automática de cards ao carregar a página
+        window.onload = autoChangeCards;
+    </script>
+
+    <!-- Recomendado para ti --> 
+    <div class="recommendation">
+        <h2>Recomendado para ti</h2>
+    </div>
+    
+    <!-- Cards Jogos --> 
+    <div class="container card-container">
+        <div class="card">
+            <div class="card-bg">
+                <img src="img/games/Spider-man2.jpg" alt="Marvel's Spider-Man 2">
+                <h2>Spider-Man<br>2</h2>
+                <a href="files/comprar/compraspider-man2.html" class="game-price">
+                    <div class="current-price">43.33€</div>
+                    <s class="original-price">63.33€</s>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-bg">
+                <img src="img/games/fifa24.jpg" alt="EA SPORTS FC 24">
+                <h2><br>EAFC 24</h2>
+                <a href="files/comprar/EAFC24.html" class= "game-price">
+                    <div class="current-price">19.31€</div>
+                    <s class="original-price">59.99€</s>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-bg">
+                <img src="img/games/got.png" alt="Ghost of Tsushima: Director's Cut">
+                <h2>Ghost of<br>Tsushima</h2>
+                <button class="botao-comprar">45.36€</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-bg">
+                <img src="img/games/gow_rag.jpg" alt="God of War Ragnarök">
+                <h2>God of War<br>Ragnarök</h2>
+                <button class="botao-comprar">49.17€</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ver-mais-container">
+        <a href="files/Ultimos lançamentos/lançamentos.html" class="ver-mais-btn">Ver Mais</a>
+    </div>
+
+
+
+<!-- Video de Publicidade --> 
+<div class="home_ctn home_hardware_banner">
+    <div class="home_page_content">
+        <a href="https://store.steampowered.com/app/1675200/Steam_Deck/?utm_source=steamhomev2&amp;snr=1_4_4__147" class="hardware_steamdeck_banner ds_no_flags app_impression_tracked" data-ds-appid="1675200" data-ds-itemkey="App_1675200" data-ds-crtrids="[4]" onmouseover="GameHover( this, event, 'global_hover', {&quot;type&quot;:&quot;app&quot;,&quot;id&quot;:1675200,&quot;public&quot;:1,&quot;v6&quot;:1} );" onmouseout="HideGameHover( this, event, 'global_hover' )">
+                                    <video loop="" muted="" autoplay="" playsinline="" data-video-pause-on-blur="" poster="https://cdn.akamai.steamstatic.com/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_static_portuguese.jpg?t=1713912919" class="steamdeck_banner_desktop" alt="Steam Deck">
+                <source src="https://cdn.akamai.steamstatic.com/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated.webm?t=1713912919" type="video/webm">
+                <img class="banner_desktop" src="https://cdn.akamai.steamstatic.com/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_static_portuguese.jpg?t=1713912919" srcset="https://cdn.akamai.steamstatic.com/steam/clusters/sale_autumn2019_assets/54b5034d397baccb93181cc6/deck_banner_animated_static_portuguese.jpg?t=1713912919 2x">
+            </video>
+        </a>
+    </div>
+</div>
+
+<!-- Giftcards --> 
+
+<div class="Giftcard">
+    <h2>GIFTCARD</h2>
+</div>
+
+<div class="giftcards">
+    <a href="files/comprar/netflix.html" class="giftcard-link">
+        <div class="giftcard">
+            <img src="img/giftcards/netflix.jpg" alt="Netflix">
+            <p>16.45€</p>
+        </div>
+    </a>
+    <a href="files/comprar/discord.html" class="giftcard-link">
+        <div class="giftcard">
+            <img src="img/giftcards/discord.jpg" alt="Discord">
+            <p>5.26€</p>
+        </div>
+    </a>
+    <a href="files/comprar/spotify.html" class="giftcard-link">
+        <div class="giftcard">
+            <img src="img/giftcards/spotify.jpg" alt="Spotify">
+            <p>6.93€</p>
+        </div>
+    </a>
+    <a href="files/comprar/google play.html" class="giftcard-link">
+        <div class="giftcard">
+            <img src="img/giftcards/playstore.jpg" alt="Google Play">
+            <p>15€</p>
+        </div>
+    </a>
+</div>
+
+<div class="ver-maisgift-container">
+    <a href="files/GIFTACRDS/GIFTCARDS.html" class="ver-maisgift-btn">Ver Mais</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Rodapé --> 
+  <footer class="footer-container">
+    <div class="footer-content">
+        <div class="column column-left">
+            <h3><a href="files/sobre.html" target="_blank" class="footer-link">Sobre Nós</a></h3>
+        </div>
+        <div class="column column-center">
+            <ul>
+                <li><a href="#">@2024 por CISMA</a></li>
+            </ul>
+        </div>
+        <div class="column column-right">
+            <h3>Siga-nos</h3>
+            <ul class="social-media">
+                <li><a href="https://www.facebook.com" target="_blank"><img src="img/redes sociais/fb.jpg" alt="Facebook"></a></li>
+                <li><a href="https://www.youtube.com/@duplexcombacon3413/" target="_blank"><img src="img/redes sociais/youtube.png" alt="YouTube"></a></li>
+                <li><a href="https://www.instagram.com/rds.menma/" target="_blank"><img src="img/redes sociais/insta.png" alt="Instagram"></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+    
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

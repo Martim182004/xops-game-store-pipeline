@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #222020;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* LOGOTIPO */
+.logotipo {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3%;
+    margin-top: 20px;
+}
+
+/* ZONA DA BARRA DE NAVEGAÇÃO */
+.navbar-nav .nav-link {
+    color: white; /* Alterar cor do texto para branco */
+}
+
+.navbar-nav .nav-item:last-child .nav-link {
+    color: red; /* Alterar cor do texto para vermelho apenas para "ÚLTIMOS LANÇAMENTOS" */
+}
+
+.navbar-nav .nav-item:first-child .nav-link {
+    margin-left: 40px; /* Adicionar margem esquerda para a primeira palavra */
+}
+
+.navbar-nav .nav-item:not(:last-child) .nav-link {
+    margin-right: 90px; /* Adicionar margem direita entre os itens */
+}
+
+.tudo {
+    background-color: #222020;
+    margin: 0; /* Remove a margem */
+    padding: 0; /* Remove o preenchimento */
+}
+
+/* Product Section */
+.product-container {
+    color: white;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.product-header {
+    display: flex;
+    align-items: center;
+}
+
+.product-header h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.rating {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.rating .stars {
+    display: inline-block;
+    color: #ffc107;
+}
+
+.details p {
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.videos img {
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.purchase-section .price-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.purchase-section .price-box h3 {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.purchase-section .btn {
+    margin-bottom: 10px;
+}
+
+.purchase-section a {
+    color: #aaa;
+}
+
+.play-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.5); /* Cor de fundo cinza claro mais transparente */
+    border: none;
+    border-radius: 50%; /* Para criar um círculo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.play-button::before {
+    content: "\25BA"; /* Código do ícone de play */
+    font-size: 20px;
+    color: black; /* Cor do ícone de play */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

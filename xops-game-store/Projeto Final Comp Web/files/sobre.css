@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #222020;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sobre Nós */
+.Giftcard h2 {
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    color: #f39c12;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.about-container h2 {
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ffffff; /* Definindo os parágrafos como branco */
+}
+
+/* Fale Connosco */
+.contact-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #f39c12;
+}
+
+.contact-container h1 {
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.contact-container address {
+    font-style: normal;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #f39c12;
+}
+
+.contact-container a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+.contact-container a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    border: none;
+    border-radius: 10px;
+}
