@@ -11,8 +11,6 @@ permissions:
   pages: write
   id-token: write
   security-events: write
-  issues: write
-
 
 concurrency:
   group: "pages"
@@ -61,11 +59,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
   # -------------------------
-  # 3️ IA REVIEW (ChatGPT)
+  # 3️ IA REVIEW (ChatGPT) - demo
   # -------------------------
   ai-review:
-    runs-on: ubuntu-latest
     needs: build-and-test
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -101,19 +99,19 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
-    # -------------------------
-    # 5️ ZAP SCAN (DAST)
-    # -------------------------
-    zap-scan:
-      needs: deploy
-      runs-on: ubuntu-latest
-      permissions:
-        contents: read   
-      steps:
-        - name: ZAP Baseline Scan
-          uses: zaproxy/action-baseline@v0.12.0
-          with:
-            target: "https://martim182004.github.io/xops-game-store-pipeline/"
-            cmd_options: "-a"
-            allow_issue_writing: false        
-            artifact_name: "zap-scan-report"   
+  # -------------------------
+  # 5️ ZAP SCAN (DAST)
+  # -------------------------
+  zap-scan:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: "https://martim182004.github.io/xops-game-store-pipeline/"
+          cmd_options: "-a"
+          allow_issue_writing: false
+          artifact_name: "zap-scan-report"
