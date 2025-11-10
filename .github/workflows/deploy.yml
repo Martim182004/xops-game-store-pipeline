@@ -11,6 +11,8 @@ permissions:
   pages: write
   id-token: write
   security-events: write
+  issues: write
+
 
 concurrency:
   group: "pages"
