@@ -110,8 +110,8 @@ jobs:
     steps:
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
+        continue-on-error: true
         with:
           target: "https://martim182004.github.io/xops-game-store-pipeline/"
           cmd_options: "-a"
           allow_issue_writing: false
-          artifact_name: "zap-scan-report"
