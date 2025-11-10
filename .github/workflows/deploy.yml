@@ -1,4 +1,4 @@
-name: CI/CD - Build, Test and Deploy
+name: CI/CD - Build, Test, IA e Segurança
 
 on:
   push:
@@ -10,19 +10,22 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  security-events: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
+  # -------------------------
+  # 1️ BUILD & TEST
+  # -------------------------
   build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Teste mínimo: verificação de links nos HTML
       - name: Check HTML links
         uses: lycheeverse/lychee-action@v1
         with:
@@ -30,22 +33,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Preparar o artefacto do site estático
       - name: Prepare artifact
         run: |
           mkdir -p _site
-          rsync -av --delete \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='docs' \
-            --exclude='*.zip' \
-            ./ _site/
+          shopt -s extglob
+          cp -r !(._site|.git|.github|*.zip) _site || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
+  # -------------------------
+  # 2️ DEPLOY
+  # -------------------------
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -56,3 +57,57 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # -------------------------
+  # 3️ IA REVIEW (ChatGPT)
+  # -------------------------
+  ai-review:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Análise IA (ChatGPT) - demo
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "### IA Review" > ia-review.log
+          echo "Ficheiros analisados:" >> ia-review.log
+          find . -maxdepth 2 -type f \( -name "*.html" -o -name "*.css" \) >> ia-review.log
+          cat ia-review.log
+
+  # -------------------------
+  # 4️ CODEQL (SAST)
+  # -------------------------
+  codeql:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+  # -------------------------
+  # 5️ ZAP SCAN (DAST)
+  # -------------------------
+  zap-scan:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: "https://martim182004.github.io/xops-game-store-pipeline/"
+          cmd_options: "-a"
