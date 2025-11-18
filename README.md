@@ -52,3 +52,48 @@ O pipeline é definido em `.github/workflows/deploy.yml` e é executado automati
 
 O pipeline atual faz o build e o deploy automático do site, garantindo que o conteúdo publicado está sempre atualizado com o código da branch principal.  
 Nos próximos sprints será adicionada validação de qualidade e segurança com suporte de IA.
+
+
+---
+
+## Pipeline CI/CD (Sprint 3 – IA e Segurança)
+
+Nesta sprint, o pipeline foi expandido para incluir ferramentas de análise automática de qualidade e segurança.  
+Estes novos passos são executados depois do build e antes/depois do deploy, garantindo que cada alteração é revista de forma automática.
+
+### O que foi adicionado:
+
+### 1. IA Review (ChatGPT – Demo)
+Job simples que demonstra integração de IA no pipeline.  
+Gera um pequeno relatório (`ia-review.log`) com os ficheiros analisados, representando uma etapa inicial de revisão automática assistida por IA.
+
+### 2. CodeQL (SAST)
+Ferramenta de *Static Application Security Testing* que analisa o código em busca de vulnerabilidades.  
+Nesta sprint, o CodeQL detetou por exemplo:
+
+- Inclusão de scripts externos sem verificação de integridade (CDN sem SRI), identificados no `index.html`.
+
+Os resultados ficam disponíveis na aba **Security → Code scanning alerts** do GitHub.
+
+### 3. OWASP ZAP Baseline Scan (DAST)
+Depois do deploy para o GitHub Pages, o ZAP analisa a versão pública do site.  
+O scan não encontrou falhas críticas, mas reportou vários avisos relacionados com:
+
+- ausência de cabeçalhos de segurança (CSP, X-Frame-Options, etc.)  
+- configurações de cache e proteção incompleta  
+
+Estes resultados estão visíveis nos logs do job `zap-scan` em **GitHub Actions**.
+
+---
+
+## Resumo do pipeline atual (Sprint 3)
+
+O workflow completo passa agora pelas seguintes etapas:
+
+1. **Build e testes (Lychee)**  
+2. **Empacotamento e deploy no GitHub Pages**  
+3. **Revisão automática com IA (ChatGPT – demo)**  
+4. **Análise de segurança de código (CodeQL – SAST)**  
+5. **Scan de segurança da aplicação publicada (OWASP ZAP – DAST)**  
+
+Com estas adições, o pipeline garante maior qualidade, deteção precoce de falhas e monitorização contínua do site.
