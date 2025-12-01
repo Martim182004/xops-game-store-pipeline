@@ -97,3 +97,33 @@ O workflow completo passa agora pelas seguintes etapas:
 5. **Scan de segurança da aplicação publicada (OWASP ZAP – DAST)**  
 
 Com estas adições, o pipeline garante maior qualidade, deteção precoce de falhas e monitorização contínua do site.
+
+---
+
+## Sprint 4 – Demonstração Final e Relatório
+
+Nesta sprint foi feita a consolidação do pipeline e a preparação da entrega final do projeto.  
+O foco esteve na demonstração prática, organização dos artefactos e elaboração do relatório técnico.
+
+### ✔ Relatório final (formato IEEE)
+Foi elaborado um relatório técnico que documenta:
+
+- a arquitetura do pipeline  
+- o processo de desenvolvimento por sprints  
+- a integração de IA  
+- a análise de segurança (SAST e DAST)  
+- os resultados obtidos  
+- a reflexão ética e crítica sobre o uso de IA  
+
+O relatório encontra-se disponível na pasta `/docs`.
+
+👉 **Link para o relatório:**  
+`/docs/relatorio_final.pdf`
+
+### ✔ Conclusão geral do projeto
+O pipeline desenvolvido demonstra uma abordagem moderna ao CI/CD, integrando automação, IA e segurança.  
+A cada alteração no repositório, todo o fluxo — build, testes, análise, segurança e deploy — é executado automaticamente, garantindo qualidade contínua e entrega rápida.
+
+A combinação de IA, SAST e DAST permitiu elevar o nível de maturidade da pipeline, aproximando-a de práticas reais de DevSecOps e XOps.
+
+---
