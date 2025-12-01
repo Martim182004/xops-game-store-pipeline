@@ -105,7 +105,7 @@ Com estas adições, o pipeline garante maior qualidade, deteção precoce de fa
 Nesta sprint foi feita a consolidação do pipeline e a preparação da entrega final do projeto.  
 O foco esteve na demonstração prática, organização dos artefactos e elaboração do relatório técnico.
 
-### ✔ Relatório final (formato IEEE)
+###  Relatório final (formato IEEE)
 Foi elaborado um relatório técnico que documenta:
 
 - a arquitetura do pipeline  
@@ -117,10 +117,10 @@ Foi elaborado um relatório técnico que documenta:
 
 O relatório encontra-se disponível na pasta `/docs`.
 
-👉 **Link para o relatório:**  
+ **Link para o relatório:**  
 `/docs/relatorio_final.pdf`
 
-### ✔ Conclusão geral do projeto
+###  Conclusão geral do projeto
 O pipeline desenvolvido demonstra uma abordagem moderna ao CI/CD, integrando automação, IA e segurança.  
 A cada alteração no repositório, todo o fluxo — build, testes, análise, segurança e deploy — é executado automaticamente, garantindo qualidade contínua e entrega rápida.
 
